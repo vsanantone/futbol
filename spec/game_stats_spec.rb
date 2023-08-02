@@ -4,7 +4,16 @@ require './lib/game'
 require 'csv'
 
 describe GameStats do
-  let(:game_stats) {game_stats = GameStats.new('data/games.csv')}
+  game_path = './data/games.csv'
+  team_path = './data/teams.csv'
+  game_teams_path = './data/game_teams.csv'
+
+  data_hash = {
+    games: game_path,
+    teams: team_path,
+    game_teams: game_teams_path
+  }
+  let(:game_stats) {game_stats = GameStats.new(data_hash)}
   describe "#initialize" do
     it "exists" do
 
