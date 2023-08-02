@@ -1,3 +1,4 @@
+require_relative 'spec_helper'
 require './lib/game_stats'
 require './lib/game'
 require 'csv'
