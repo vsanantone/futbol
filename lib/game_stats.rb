@@ -6,15 +6,16 @@ class GameStats
               :counter
 
   def initialize(data)
-    @data = CSV.parse (File.read(data[:games])), headers: true, header_converters: :symbol
-    @games = []
-    build_games(@data)
+    @games = build_games(data)
   end
 
   def build_games(data)
-    data.each do |row|
-      @games << Game.new(row)
+    games = []
+    info = CSV.parse (File.read(data[:games])), headers: true, header_converters: :symbol
+    info.each do |row|
+      games << Game.new(row)
     end
+    games
   end
 
   def highest_total_score
