@@ -76,7 +76,7 @@ class GameStats
     goals = @games.sum do |game|
       game.home_goals + game.away_goals
     end
-    (goals.to_f / games.count.to_f).round(2)
+    average_goals_formated(goals, @games.count)
   end
     
   def average_goals_by_season
@@ -89,12 +89,16 @@ class GameStats
     goals_per_season[game.season] += (game.away_goals + game.home_goals)
    end
    {
-    "20122013" => (goals_per_season["20122013"].to_f / games_per_season["20122013"].to_f).round(2),
-    "20132014" => (goals_per_season["20132014"].to_f / games_per_season["20132014"].to_f).round(2),
-    "20142015" => (goals_per_season["20142015"].to_f / games_per_season["20142015"].to_f).round(2),
-    "20152016" => (goals_per_season["20152016"].to_f / games_per_season["20152016"].to_f).round(2),
-    "20162017" => (goals_per_season["20162017"].to_f / games_per_season["20162017"].to_f).round(2),
-    "20172018" => (goals_per_season["20172018"].to_f / games_per_season["20172018"].to_f).round(2) 
+    "20122013" => average_goals_formated(goals_per_season["20122013"], games_per_season["20122013"]),
+    "20132014" => average_goals_formated(goals_per_season["20132014"], games_per_season["20132014"]),
+    "20142015" => average_goals_formated(goals_per_season["20142015"], games_per_season["20142015"]),
+    "20152016" => average_goals_formated(goals_per_season["20152016"], games_per_season["20152016"]),
+    "20162017" => average_goals_formated(goals_per_season["20162017"], games_per_season["20162017"]),
+    "20172018" => average_goals_formated(goals_per_season["20172018"], games_per_season["20172018"])
    }
+  end
+
+  def average_goals_formated(goals, games)
+    (goals.to_f / games.to_f).round(2)
   end
 end

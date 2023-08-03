@@ -82,6 +82,13 @@ describe GameStats do
       expect(game_stats.average_goals_by_season).to eq(expected)
     end
   end  
+  
+  describe "#average_goals_formated" do
+    it "returns average goals from 2 Integer arguments" do
+
+      expect(game_stats.average_goals_formated(2, 2)).to eq(1)
+    end
+  end
 end
 
   
