@@ -17,4 +17,20 @@ class StatTracker
   def highest_total_score
     @game_stats.highest_total_score
   end
+
+  def lowest_total_score
+    @game_stats.highest_total_score
+  end
+
+  def percentage_home_wins
+    @game_stats.percentage_home_wins
+  end
+
+  def percentage_visitor_wins
+    @game_stats.percentage_visitor_wins
+  end
+
+  def percentage_ties
+    @game_teams.percentage_ties
+  end
 end
