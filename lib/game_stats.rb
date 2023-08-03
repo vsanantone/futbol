@@ -73,8 +73,32 @@ class GameStats
   end
 
   def average_goals_per_game
+    goals = @games.sum do |game|
+      game.home_goals + game.away_goals
+    end
+    average_goals_formated(goals, @games.count)
   end
     
   def average_goals_by_season
+    games_per_season = Hash.new(0)
+    @games.each do |game|
+      games_per_season[game.season] += 1
+    end
+   goals_per_season = Hash.new(0)
+   @games.each do |game|
+    goals_per_season[game.season] += (game.away_goals + game.home_goals)
+   end
+   {
+    "20122013" => average_goals_formated(goals_per_season["20122013"], games_per_season["20122013"]),
+    "20132014" => average_goals_formated(goals_per_season["20132014"], games_per_season["20132014"]),
+    "20142015" => average_goals_formated(goals_per_season["20142015"], games_per_season["20142015"]),
+    "20152016" => average_goals_formated(goals_per_season["20152016"], games_per_season["20152016"]),
+    "20162017" => average_goals_formated(goals_per_season["20162017"], games_per_season["20162017"]),
+    "20172018" => average_goals_formated(goals_per_season["20172018"], games_per_season["20172018"])
+   }
+  end
+
+  def average_goals_formated(goals, games)
+    (goals.to_f / games.to_f).round(2)
   end
 end
