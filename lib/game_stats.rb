@@ -5,7 +5,7 @@ class GameStats
   attr_reader :games
 
   def initialize(data)
-    @data = CSV.parse (File.read(data)), headers: true, header_converters: :symbol
+    @data = CSV.parse (File.read(data[:games])), headers: true, header_converters: :symbol
     @games = []
     build_games(@data)
   end
