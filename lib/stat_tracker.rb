@@ -19,7 +19,7 @@ class StatTracker
   end
 
   def lowest_total_score
-    @game_stats.highest_total_score
+    @game_stats.lowest_total_score
   end
 
   def percentage_home_wins
