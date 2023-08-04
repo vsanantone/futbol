@@ -8,6 +8,7 @@ class LeagueStats
 
   def initialize(data)
     @games = build_games(data)
+    @teams = build_teams(data)
   end
 
   def build_games(data)
@@ -17,6 +18,15 @@ class LeagueStats
       games << Game.new(row)
     end
     games
+  end
+
+  def build_teams(data)
+    teams = []
+    team_info = CSV.parse (File.read(data[:teams])), headers: true, header_converters: :symbol
+    team_info.each do |row|
+      teams << Team.new(row)
+    end
+    teams
   end
 
 end

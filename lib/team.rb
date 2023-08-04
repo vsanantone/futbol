@@ -3,7 +3,7 @@ class Team
               :id
 
   def initialize(team_data)
-    @name = team_data[:name]
-    @id = team_data[:id]
+    @name = team_data[:teamname]
+    @id = team_data[:team_id]
   end
 end

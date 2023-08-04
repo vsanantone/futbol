@@ -24,7 +24,7 @@ describe LeagueStats do
       expect(league_stats.games).to all be_a(Game)
     end
 
-    xit "has readable array of team objects" do
+    it "has readable array of team objects" do
       expect(league_stats.teams).to all be_a(Team)
     end
 
