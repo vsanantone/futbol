@@ -1,5 +1,5 @@
 class GameTeam
-  attr_reader :team_id, :result, :head_coach, :shots, :goals, :tackles
+  attr_reader :team_id, :result, :head_coach, :shots, :goals, :tackles, :hoa
 
   def initialize(game_team_data)
     @team_id = game_team_data[:team_id]
@@ -8,5 +8,6 @@ class GameTeam
     @shots = game_team_data[:shots]
     @goals = game_team_data[:goals]
     @tackles = game_team_data[:tackles]
+    @hoa = game_team_data[:hoa]
   end
 end

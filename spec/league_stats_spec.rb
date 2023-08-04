@@ -50,4 +50,10 @@ describe LeagueStats do
       expect(league_stats.worst_offense).to eq "Utah Royals FC"
     end
   end
+
+  describe "#highest_scoring_visitor" do
+    it "returns name of the team with the highest average score per game across all seasons when they are away" do
+      expect(league_stats.highest_scoring_visitor).to eq "FC Dallas"
+    end
+  end
 end
