@@ -12,6 +12,9 @@ class StatTracker
 
   def initialize(data)
     @game_stats = GameStats.new(data)
+    # @team_stats = TeamStats.new(data)
+    # @league_stats = LeagueStats.new(data)
+    # @season_stats = SeasonStats.new(data)
   end
 
   def highest_total_score
