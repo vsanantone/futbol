@@ -38,4 +38,16 @@ describe LeagueStats do
       expect(league_stats.count_of_teams).to eq(32)
     end
   end
+
+  describe "#best_offense" do 
+    it "returns team name with highest average goals per game across all seasons" do
+      expect(league_stats.best_offense).to eq("Reign FC")
+    end
+  end
+
+  describe "#worst_offense" do
+    it "returns team name with lowest average goals per game across all seasons" do
+      expect(league_stats.worst_offense).to eq "Utah Royals FC"
+    end
+  end
 end
