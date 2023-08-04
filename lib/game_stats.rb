@@ -6,15 +6,16 @@ class GameStats
               :counter
 
   def initialize(data)
-    @data = CSV.parse (File.read(data[:games])), headers: true, header_converters: :symbol
-    @games = []
-    build_games(@data)
+    @games = build_games(data)
   end
 
   def build_games(data)
-    data.each do |row|
-      @games << Game.new(row)
+    games = []
+    info = CSV.parse (File.read(data[:games])), headers: true, header_converters: :symbol
+    info.each do |row|
+      games << Game.new(row)
     end
+    games
   end
 
   def highest_total_score
@@ -80,22 +81,27 @@ class GameStats
   end
     
   def average_goals_by_season
+    games_per_season = count_of_games_by_season
+    goals_per_season = Hash.new(0)
+    @games.each do |game|
+    goals_per_season[game.season] += (game.away_goals + game.home_goals)
+    end
+    {
+      "20122013" => average_goals_formated(goals_per_season["20122013"], games_per_season["20122013"]),
+      "20132014" => average_goals_formated(goals_per_season["20132014"], games_per_season["20132014"]),
+      "20142015" => average_goals_formated(goals_per_season["20142015"], games_per_season["20142015"]),
+      "20152016" => average_goals_formated(goals_per_season["20152016"], games_per_season["20152016"]),
+      "20162017" => average_goals_formated(goals_per_season["20162017"], games_per_season["20162017"]),
+      "20172018" => average_goals_formated(goals_per_season["20172018"], games_per_season["20172018"])
+    }
+  end
+
+  def count_of_games_by_season
     games_per_season = Hash.new(0)
     @games.each do |game|
       games_per_season[game.season] += 1
     end
-   goals_per_season = Hash.new(0)
-   @games.each do |game|
-    goals_per_season[game.season] += (game.away_goals + game.home_goals)
-   end
-   {
-    "20122013" => average_goals_formated(goals_per_season["20122013"], games_per_season["20122013"]),
-    "20132014" => average_goals_formated(goals_per_season["20132014"], games_per_season["20132014"]),
-    "20142015" => average_goals_formated(goals_per_season["20142015"], games_per_season["20142015"]),
-    "20152016" => average_goals_formated(goals_per_season["20152016"], games_per_season["20152016"]),
-    "20162017" => average_goals_formated(goals_per_season["20162017"], games_per_season["20162017"]),
-    "20172018" => average_goals_formated(goals_per_season["20172018"], games_per_season["20172018"])
-   }
+    games_per_season
   end
 
   def average_goals_formated(goals, games)
