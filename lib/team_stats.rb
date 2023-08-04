@@ -15,7 +15,7 @@ class Team_Stats
 
   def build_teams(data)
     data.each do |row|
-      @teams << Team.new(id: row[:team_id], name: row[:teamName].to_s)
+      @teams << Team.new(id: row[:team_id], name: row[:teamname].to_s)
     end
   end
 
@@ -29,36 +29,28 @@ class Team_Stats
     }
 
     team = find_by_id(team_id)
-    team_stats[:team_name] = team[:name]
+    team_stats[:team_name] = team.name
 
-    relevant_game_teams = @game_teams_data.select do |game_team| 
-      game_team[:team_id] == team_id.to_s
+    relevant_game_teams_data = @game_teams_data.select do |game_team| 
+      game_team[:team_id] == team_id
     end
 
-    relevant_game_teams.each do |game_team|
+    relevant_game_teams_data.each do |game_team|
       if game_team[:result] == 'WIN'
         team_stats[:wins] += 1
       elsif game_team[:result] == 'LOSS'
         team_stats[:losses] += 1
       end
-      team_stats[:shots_on_goal] += game_team[:shots].to_i
+      team_stats[:shots_on_goal] += game_team[:shotsOnGoal].to_i
       team_stats[:total_goals] += game_team[:goals].to_i
     end
     team_stats
   end
 
-  # iterate through my teams array
-
   def find_by_id(team_id)
-    # require 'pry';binding.pry
     searched_team = @teams.find(team_id) do |team|
       team.id == team_id
     end
     searched_team
   end
-  #   team_data = @teams_data.find do |team|
-  #     team[:team_id] == team_id
-  #   end
-  #   Team.new(team_id: team_data[:team_id], name: team_data[:teamName])
-  # end
 end
