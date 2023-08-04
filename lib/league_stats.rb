@@ -39,4 +39,8 @@ class LeagueStats
     game_teams
   end
 
+  def count_of_teams
+    @teams.count
+  end
+
 end

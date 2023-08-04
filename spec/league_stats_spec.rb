@@ -32,4 +32,10 @@ describe LeagueStats do
       expect(league_stats.game_teams).to all be_a(GameTeam)
     end
   end
+
+  describe "#count_of_teams" do
+    it "returns total number of teams as int" do
+      expect(league_stats.count_of_teams).to eq(32)
+    end
+  end
 end
