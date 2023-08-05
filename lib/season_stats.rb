@@ -61,8 +61,6 @@ class SeasonStats
     coach_games = season.find_all do |game|
       game.head_coach == coach
     end
-    require 'pry';binding.pry
-    
     coach_games.length
   end
 
@@ -71,8 +69,12 @@ class SeasonStats
     most_wins = season.map do |game|
       game.head_coach
     end
-    most_wins.tally do |coach, total_wins|
+    most_wins_hash = most_wins.tally do |coach, total_wins|
       coach
+    end
+    coach_win_percentages = most_wins_hash.map do |coach, total_wins|
+      total_games = total_games_by_coach(season_id, coach).to_f
+      total_wins.to_f / total_games
     end
   end
 end
