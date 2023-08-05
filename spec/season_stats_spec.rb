@@ -33,16 +33,11 @@ RSpec.describe SeasonStats do
       expect(season_stats.indiv_season("20122013")).to all be_a(GameTeam)
     end
   end
-  
-  describe "#winning_games_per_season" do 
-    it "can return an array of all games who's result == 'WIN' for the passed in season ID" do 
-      expect(season_stats.winning_games_per_season("20122013")).to all be_a(GameTeam)
-    end
-  end
 
-  describe "#losing_games_per_season" do 
-    it "can return an array of all games who's result == 'LOSS'" do 
-      expect(season_stats.losing_games_per_season("20122013")).to all be_a(GameTeam)
+  describe "#win_or_loss_per_season" do 
+    it "can return an array of all game_team objects with the expected result ('WIN'/'LOSS')" do 
+      expect(season_stats.win_or_loss_per_season("20122013","WIN")).to all be_a(GameTeam)
+      expect(season_stats.win_or_loss_per_season("20122013","LOSS")).to all be_a(GameTeam)
     end
   end
 
