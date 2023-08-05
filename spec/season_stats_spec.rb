@@ -41,6 +41,12 @@ RSpec.describe SeasonStats do
     end
   end
 
+  describe "#total_games_by_coach" do 
+    it "can return a count of all games per season by given coach" do 
+      expect(season_stats.total_games_by_coach("20132014","Claude Julien")).to be_an(Integer)
+    end
+  end
+
   describe '#winningest_coach' do 
     xit 'returns the name of the coach with the best win percentage for the season' do
       expect(season_stats.winningest_coach("20132014")).to eq("Claude Julien")
