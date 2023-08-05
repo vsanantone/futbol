@@ -5,8 +5,7 @@ class SeasonStats
   def initialize(data)
     @games = build_games(data)
     @teams = build_teams(data)
-    @game_teams = build_game_teams(data)
-
+    @game_teams = build_game_teams(data)  
   end
 
   def build_games(data)
@@ -39,20 +38,27 @@ class SeasonStats
   
   def indiv_season(season_id)
     season = games.find_all do |game|
-      season_id == game.season
+      season_id == game.season 
     end
-    season
+    game_season = game_teams.find_all do |game_team|
+      season.find_all do |indiv_game|
+          game_team.game_id == indiv_game.game_id
+      end
+    end
+    game_season
   end
 
-  def all_winning_games
-    winning_games = game_teams.find_all do |game|
+  def winning_games_per_season(season_id)
+    season = indiv_season(season_id) 
+    winning_games = season.find_all do |game|
       game.result == "WIN"
     end
     winning_games
   end
 
-  def all_losing_games
-    losing_games = game_teams.find_all do |game|
+  def losing_games_per_season(season_id)
+    season = indiv_season(season_id) 
+    losing_games = season.find_all do |game|
       game.result == "LOSS"
     end
     losing_games
