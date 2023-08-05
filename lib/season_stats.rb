@@ -50,9 +50,29 @@ class SeasonStats
 
   def win_or_loss_per_season(season_id, expected_result)
     season = indiv_season(season_id) 
-    losing_games = season.find_all do |game|
+    season_games = season.find_all do |game|
       game.result == expected_result
     end
-    losing_games
+    season_games
+  end
+
+  def total_games_by_coach(season_id, coach)
+    season = indiv_season(season_id)
+    coach_games = season.find_all do |game|
+      game.head_coach == coach
+    end
+    require 'pry';binding.pry
+    
+    coach_games.length
+  end
+
+  def winningest_coach(season_id)
+    season = win_or_loss_per_season(season_id, "WIN")
+    most_wins = season.map do |game|
+      game.head_coach
+    end
+    most_wins.tally do |coach, total_wins|
+      coach
+    end
   end
 end
