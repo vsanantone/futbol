@@ -48,18 +48,10 @@ class SeasonStats
     game_season
   end
 
-  def winning_games_per_season(season_id)
-    season = indiv_season(season_id) 
-    winning_games = season.find_all do |game|
-      game.result == "WIN"
-    end
-    winning_games
-  end
-
-  def losing_games_per_season(season_id)
+  def win_or_loss_per_season(season_id, expected_result)
     season = indiv_season(season_id) 
     losing_games = season.find_all do |game|
-      game.result == "LOSS"
+      game.result == expected_result
     end
     losing_games
   end
