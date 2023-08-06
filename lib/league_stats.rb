@@ -44,9 +44,16 @@ class LeagueStats < Stats
     best_team_visiting.name
   end
 
-  # add highest_scoring_home_team
+  def highest_scoring_home_team
+    avg_goals_home = average_team_goals_all_seasons(team_goals_hash('home'), games_per_team('home'))
+    best_home_team = avg_goals_home.max_by do |team, avg|
+      avg
+    end
+    best_team = find_team_by_id(best_home_team[0])
+    best_team.name
+  end
 
-  def lowest_scoring_visitor #needs a test
+  def lowest_scoring_visitor
     avg_goals_visiting = average_team_goals_all_seasons(team_goals_hash('visitor'), games_per_team('visitor'))
     worst_visitor = avg_goals_visiting.min_by do |team, avg|
       avg
@@ -55,7 +62,14 @@ class LeagueStats < Stats
     worst_team_visiting.name
   end
 
-  # add lowest_scoring_home_team
+  def lowest_scoring_home_team
+    avg_goals_home = average_team_goals_all_seasons(team_goals_hash('home'), games_per_team('home'))
+    worst_home_team = avg_goals_home.min_by do |team, avg|
+      avg
+    end
+    worst_team = find_team_by_id(worst_home_team[0])
+    worst_team.name
+  end
 
   def team_info(team_id)
     team = find_team_by_id(team_id)
@@ -88,6 +102,11 @@ class LeagueStats < Stats
       @game_teams.each do |game|
         team_goals[game.team_id] += game.goals.to_i if game.hoa == 'away'
       end
+    elsif home_away_all == "home"
+      team_goals = Hash.new(0)
+      @game_teams.each do |game|
+        team_goals[game.team_id] += game.goals.to_i if game.hoa == 'home'
+      end
     end
     team_goals
   end
@@ -102,6 +121,11 @@ class LeagueStats < Stats
       team_game_count = Hash.new(0)
       @game_teams.each do |game|
         team_game_count[game.team_id] += 1 if game.hoa == 'away'
+      end
+    elsif home_away_all == 'home'
+      team_game_count = Hash.new(0)
+      @game_teams.each do |game|
+        team_game_count[game.team_id] += 1 if game.hoa == 'home'
       end
     end
     team_game_count

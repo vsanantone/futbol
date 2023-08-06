@@ -6,7 +6,7 @@ RSpec.describe Team do
     {
       teamname: "Atlanta United",
       team_id: "1",
-      franchiseId: "23",
+      franchiseid: "23",
       abbreviation: "ATL",
       Stadium: "Mercedes-Benz Stadium",
       link: "/api/v1/teams/1"
