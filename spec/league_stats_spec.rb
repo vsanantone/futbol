@@ -57,15 +57,17 @@ describe LeagueStats do
     end
   end
 
-  # describe "#team_info" do
-  #   it "returns the info for the team specified by team_id" do
-  #     expect(league_stats.team_info("1")).to eq 
-
-#       :team_id=>"1",                      
-#  :franchise_id=>nil,
-#  :team_name=>"Atlanta United",
-#  :abbreviation=>"ATL",
-#  :link=>"/api/v1/teams/1"}
-    # end
-  # end
+  describe "#team_info" do
+    it "returns the info for the team specified by team_id" do
+      team_id = "1"
+      expected_info = {
+        team_id=>"1",                      
+        franchise_id: "34",
+        team_name: "Atlanta United",
+        abbreviation: "ATL",
+        link: "/api/v1/teams/1"
+      }
+      expect(league_stats.team_info(team_id)).to eq expected_info 
+    end
+  end
 end
