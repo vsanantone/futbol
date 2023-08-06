@@ -44,6 +44,25 @@ class LeagueStats < Stats
     best_team_visiting.name
   end
 
+  # add highest_scoring_home_team
+
+  # add lowest_scoring_visitor
+
+  # add lowest_scoring_home_team
+
+  def team_info(team_id)
+    # require 'pry';binding.pry
+    team = find_team_by_id(team_id)
+    info = {
+      team_id: team.id,
+      franchise_id: team.franchise_id, #this, abbrev, and link all fail because they are not instantiated attributes of the Team class in the parent stats file.
+      team_name: team.name,
+      abbreviation: team.abbreviation,
+      link: team.link
+    }
+    info
+  end
+
   def average_team_goals_all_seasons(goals_hash, games_hash)
     avg_goals = Hash.new
     goals_hash.each do |team, goals|

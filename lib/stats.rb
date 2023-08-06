@@ -32,5 +32,4 @@ class Stats
     end
     game_teams
   end
-  
 end

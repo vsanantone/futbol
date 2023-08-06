@@ -34,16 +34,6 @@ class Team_Stats
     relevant_game_teams_data = @game_teams_data.select do |game_team| 
       game_team[:team_id] == team_id
     end
-
-    relevant_game_teams_data.each do |game_team|
-      if game_team[:result] == 'WIN'
-        team_stats[:wins] += 1
-      elsif game_team[:result] == 'LOSS'
-        team_stats[:losses] += 1
-      end
-      team_stats[:shots_on_goal] += game_team[:shotsOnGoal].to_i
-      team_stats[:total_goals] += game_team[:goals].to_i
-    end
     team_stats
   end
 

@@ -56,4 +56,10 @@ describe LeagueStats do
       expect(league_stats.highest_scoring_visitor).to eq "FC Dallas"
     end
   end
+
+  describe "#team_info" do
+    it "returns the info for the team specified by team_id" do
+      expect(league_stats.team_info("1")).to eq blah
+    end
+  end
 end
