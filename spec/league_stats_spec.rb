@@ -61,8 +61,8 @@ describe LeagueStats do
     it "returns the info for the team specified by team_id" do
       team_id = "1"
       expected_info = {
-        team_id=>"1",                      
-        franchise_id: "34",
+        team_id: "1",                      
+        franchise_id: "23",
         team_name: "Atlanta United",
         abbreviation: "ATL",
         link: "/api/v1/teams/1"

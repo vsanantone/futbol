@@ -6,7 +6,7 @@ RSpec.describe Team do
     {
       teamname: "Atlanta United",
       team_id: "1",
-      franchiseId: "34",
+      franchiseId: "23",
       abbreviation: "ATL",
       Stadium: "Mercedes-Benz Stadium",
       link: "/api/v1/teams/1"
@@ -22,7 +22,7 @@ RSpec.describe Team do
   it "has readable attributes" do
     expect(team.name).to eq "Atlanta United"
     expect(team.id).to eq "1"
-    expect(team.franchise_id).to eq "34"
+    expect(team.franchise_id).to eq "23"
     expect(team.abbreviation).to eq "ATL"
     expect(team.stadium).to eq "Mercedes-Benz Stadium"
     expect(team.link).to eq "/api/v1/teams/1"

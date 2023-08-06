@@ -46,8 +46,7 @@ class LeagueStats < Stats
 
   # add highest_scoring_home_team
 
-  # add lowest_scoring_visitor
-  def lowest_scoring_visitor
+  def lowest_scoring_visitor #needs a test
     avg_goals_visiting = average_team_goals_all_seasons(team_goals_hash('visitor'), games_per_team('visitor'))
     worst_visitor = avg_goals_visiting.min_by do |team, avg|
       avg
@@ -113,5 +112,4 @@ class LeagueStats < Stats
       team.id == id
     end
   end
-
 end
