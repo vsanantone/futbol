@@ -40,9 +40,12 @@ class SeasonStats
     season = games.find_all do |game|
       season_id == game.season 
     end
-    game_season = game_teams.find_all do |game_team|
-      season.find_all do |indiv_game|
-          game_team.game_id == indiv_game.game_id
+    game_season = []
+    game_teams.find_all do |game_team|
+      season.find_all do |season_game|
+        if game_team.game_id == season_game.game_id
+          game_season << game_team
+        end
       end
     end
     game_season
@@ -72,9 +75,27 @@ class SeasonStats
     most_wins_hash = most_wins.tally do |coach, total_wins|
       coach
     end
-    coach_win_percentages = most_wins_hash.map do |coach, total_wins|
+    coach_win_percentages = most_wins_hash.max_by do |coach, total_wins|
       total_games = total_games_by_coach(season_id, coach).to_f
       total_wins.to_f / total_games
     end
+    coach_win_percentages[0]
   end
+
+  # def worst_coach(season_id)
+  #   season = win_or_loss_per_season(season_id, "WIN")
+  #   most_wins = season.map do |game|
+  #     game.head_coach
+  #   end
+  #   most_wins_hash = most_wins.tally do |coach, total_wins|
+  #     coach
+  #   end
+  #   coach_win_percentages = most_wins_hash.min_by do |coach, total_wins|
+  #     total_games = total_games_by_coach(season_id, coach).to_f
+  #     total_wins.to_f / total_games
+  #   end
+  #   require 'pry';binding.pry
+  #   coach_win_percentages[0]
+  # end
+    
 end
