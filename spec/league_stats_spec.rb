@@ -56,6 +56,12 @@ describe LeagueStats do
       expect(league_stats.highest_scoring_visitor).to eq "FC Dallas"
     end
   end
+  
+  describe "#lowest_scoring_visitor" do
+    it "returns name of the team with the lowest average score per game across all seasons when they are away" do
+      expect(league_stats.lowest_scoring_visitor).to eq "San Jose Earthquakes"
+    end
+  end
 
   describe "#team_info" do
     it "returns the info for the team specified by team_id" do
