@@ -48,13 +48,17 @@ RSpec.describe SeasonStats do
   end
 
   describe '#winningest_coach' do 
-    xit 'returns the name of the coach with the best win percentage for the season' do
+    it 'returns the name of the coach with the best win percentage for the season' do
+      expect(season_stats.winningest_coach("20132014")).to be_a(String)
       expect(season_stats.winningest_coach("20132014")).to eq("Claude Julien")
+      expect(season_stats.winningest_coach("20142015")).to eq("Alain Vigneault")
     end
   end
   describe '#worst_coach' do 
-    xit 'returns the name of the coach with the worst win percentage for the season' do
-      expect(season_stats.worst_coach).to be_a(String)
+    it 'returns the name of the coach with the worst win percentage for the season' do
+      expect(season_stats.worst_coach("20132014")).to be_a(String)
+      expect(season_stats.worst_coach("20132014")).to eq "Peter Laviolette"
+      expect(season_stats.worst_coach("20142015")).to eq("Craig MacTavish").or(eq("Ted Nolan"))
     end
   end
   describe '#most_tackles' do 
