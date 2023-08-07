@@ -51,6 +51,12 @@ class SeasonStats < Stats
     teams.find_all do |team|
       team_ids << team.id
     end
+
+    season.find_all do |game|
+      game.team_id == team_id
+      total_tackles << game.tackles.to_i
+    end
+    total_team_tackles[team_id]= total_tackles.sum
   end
 
   def winningest_coach(season_id)
