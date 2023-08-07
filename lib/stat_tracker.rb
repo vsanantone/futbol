@@ -2,6 +2,7 @@ require_relative 'game'
 require_relative 'team'
 require_relative 'game_teams'
 require_relative 'game_stats'
+require_relative 'league_stats'
 require 'csv'
 
 class StatTracker
@@ -13,7 +14,7 @@ class StatTracker
   def initialize(data)
     @game_stats = GameStats.new(data)
     # @team_stats = TeamStats.new(data)
-    # @league_stats = LeagueStats.new(data)
+    @league_stats = LeagueStats.new(data)
     # @season_stats = SeasonStats.new(data)
   end
 
@@ -47,5 +48,9 @@ class StatTracker
 
   def average_goals_by_season
     @game_stats.average_goals_by_season
+  end
+
+  def count_of_teams
+    @league_stats.count_of_teams 
   end
 end
