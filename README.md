@@ -17,6 +17,11 @@ This project will use CSV data of futbol teams to create a collection of stats u
 1. Run RSpec from your terminal 
 
 ## Challenges and Wins
+**Challenges**
+- Working in different time zones 
+- Async work - we struggled in our async style to keep our pulse even across all members 
+- Each member of the group coming in with a different level of comfortability with CSVs and technical knowledge.
+
 
 ## Contributors
 **Nicholas Spencer**
@@ -52,4 +57,4 @@ We started off with drafting out the connection between classes and class method
 ## DTR 
 1. [Fellowship of the Cone DTR V1](https://docs.google.com/document/d/1mhrTh5YHafh3rpfE0dH1L_BqTM0WLCWkKzYPM7ZVUvY/edit?usp=sharing)
 
-##
+## Lord of the Cones Retro > Sailboat Format
