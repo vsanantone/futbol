@@ -3,6 +3,10 @@
 ## About
 This project will use CSV data of futbol teams to create a collection of stats used to compare teams by their game stats and season stats.
 
+## Presentation 
+[Google Slides](https://docs.google.com/presentation/d/143XJqgExalCnW1xRqgF_b6v4a0EyHYx4KoA_dEflRHA/edit?usp=sharing)
+
+
 ## Built With 
 - Ruby 2.7.2
 - RSpec 3.12
@@ -55,6 +59,7 @@ This project will use CSV data of futbol teams to create a collection of stats u
 
 ## Project Organization and workflow 
 1. Project Management [Miro Board](https://miro.com/welcomeonboard/N3pkck1nUzVxZmxNRUc0cGEyWHNXMnlnUHNrUTZMZ0xRcUhCN3BHbXg1WWhRd2o0SVUxNmJYNGFWRTEzVk1wSnwzNDU4NzY0NTYwNTgyMTA5MjczfDI=?share_link_id=894479804950)
+1. Project Management [GitHub Projects Board](https://github.com/users/deadbert/projects/2)
 1. We async came up with our own ideas of how the project would look and then came together to compare notes and decide how we wanted to build things out together. Then we used the Miro Board to help assign people to classes. 
 
 ## Different project management tools we explored and what we chose
