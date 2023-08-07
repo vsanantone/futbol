@@ -66,4 +66,12 @@ RSpec.describe StatTracker do
     }
     expect(@stat_tracker.average_goals_by_season).to eq expected
   end
+
+  it "#count_of_teams" do 
+    expect(@stat_tracker.count_of_teams).to eq 32
+  end
+
+  it "#best_offense" do
+    expect(@stat_tracker.best_offense).to eq "Reign FC"
+  end
 end
