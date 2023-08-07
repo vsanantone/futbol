@@ -65,4 +65,8 @@ class StatTracker
   def highest_scoring_visitor
     @league_stats.highest_scoring_visitor 
   end
+
+  def highest_scoring_home_team
+    @league_stats.highest_scoring_home_team 
+  end
 end
