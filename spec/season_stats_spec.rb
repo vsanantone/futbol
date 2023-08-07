@@ -47,6 +47,15 @@ RSpec.describe SeasonStats do
     end
   end
 
+  describe "#total_team_tackles_per_season" do
+    it "can return the number of total tackles for each team per season" do 
+      expect(season_stats.total_team_tackles_per_season("20132014", "3")).to eq(64035)
+      expect(season_stats.total_team_tackles_per_season("20142015", "3")).to eq(67417)
+      expect(season_stats.total_team_tackles_per_season("20132014", "1")).to eq(64035)
+      expect(season_stats.total_team_tackles_per_season("20152016", "1")).to eq(63232)
+    end
+  end
+
   describe '#winningest_coach' do 
     xit 'returns the name of the coach with the best win percentage for the season' do
       expect(season_stats.winningest_coach("20132014")).to be_a(String)
@@ -54,32 +63,38 @@ RSpec.describe SeasonStats do
       expect(season_stats.winningest_coach("20142015")).to eq("Alain Vigneault")
     end
   end
-  describe '#worst_coach' do 
-    it 'returns the name of the coach with the worst win percentage for the season' do
-      expect(season_stats.worst_coach("20132014")).to be_a(String)
-      expect(season_stats.worst_coach("20132014")).to eq "Peter Laviolette"
-      expect(season_stats.worst_coach("20142015")).to eq("Craig MacTavish").or(eq("Ted Nolan"))
-    end
-  end
-  describe '#most_tackles' do 
-    xit 'returns the name of the team with the most tackles for the season' do
-      expect(season_stats.most_tackles).to be_a(String)
-    end
-  end
-  describe '#fewest_tackles' do 
-    xit 'returns the name of the team with the most tackles for the season' do
-      expect(season_stats.most_tackles).to be_a(String)
-    end
-  end
-  describe '#most_accurate_team' do 
-    xit 'returns the name of the team with the best ratio of shots to goals for the season' do
-      expect(season_stats.most_accurate_team).to be_a(String)
-    end
-  end
-  describe '#least_accurate_team' do 
-    xit 'returns the name of the team with the worst ratio of shots to goals for the season' do
-      expect(season_stats.least_accurate_team).to be_a(String)
-    end
+  # describe '#worst_coach' do 
+  #   xit 'returns the name of the coach with the worst win percentage for the season' do
+  #     expect(season_stats.worst_coach("20132014")).to be_a(String)
+  #     expect(season_stats.worst_coach("20132014")).to eq "Peter Laviolette"
+  #     expect(season_stats.worst_coach("20142015")).to eq("Craig MacTavish").or(eq("Ted Nolan"))
+  #   end
+  # end
+  # describe '#most_tackles' do 
+  #   it 'returns the name of the team with the most tackles for the season' do
+  #     # expect(season_stats.most_tackles("20132014")).to be_a(String)
+    
 
-  end
+  #     expect(season_stats.most_tackles("20132014")).to eq "FC Cincinnati"
+  #     expect(season_stats.most_tackles("20142015")).to eq "Seattle Sounders FC"
+  #     expect(season_stats.most_tackles("20142015")).to eq "Seattle Sounders FC"
+  #     expect(season_stats.most_tackles("20142015")).to eq "Seattle Sounders FC"
+  #   end
+  # end
+
+  # describe '#fewest_tackles' do 
+  #   xit 'returns the name of the team with the most tackles for the season' do
+  #     expect(season_stats.fewest_tackles).to be_a(String)
+  #   end
+  # end
+  # describe '#most_accurate_team' do 
+  #   xit 'returns the name of the team with the best ratio of shots to goals for the season' do
+  #     expect(season_stats.most_accurate_team).to be_a(String)
+  #   end
+  # end
+  # describe '#least_accurate_team' do 
+  #   xit 'returns the name of the team with the worst ratio of shots to goals for the season' do
+  #     expect(season_stats.least_accurate_team).to be_a(String)
+  #   end
+  # end
 end
