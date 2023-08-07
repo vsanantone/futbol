@@ -56,7 +56,7 @@ class GameStats
     end
     ((percent.length.to_f) / (@games.length.to_f)).round(2)
   end
-   
+  
   def percentage_ties
     percent = @games.find_all do |game|
 

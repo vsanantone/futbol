@@ -1,4 +1,5 @@
 GEM
+  remote: https://rubygems.org/
   specs:
     docile (1.4.0)
     simplecov (0.22.0)
@@ -9,10 +10,11 @@ GEM
     simplecov_json_formatter (0.1.4)
 
 PLATFORMS
+  arm64-darwin-21
   arm64-darwin-22
 
 DEPENDENCIES
   simplecov
 
 BUNDLED WITH
-   2.3.26
+   2.4.14
