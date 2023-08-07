@@ -42,10 +42,15 @@ RSpec.describe SeasonStats do
   end
 
   describe "#total_games_by_coach" do 
-    xit "can return a count of all games per season by given coach" do 
-      expect(season_stats.total_games_by_coach("20132014","Claude Julien")).to be_an(Integer)
-    end
+  it "can return a count of all games per season by given coach" do 
+    expect(season_stats.total_games_by_coach("20132014","Claude Julien")).to eq(94)
+    expect(season_stats.total_games_by_coach("20132014","Gerard Gallant")).to eq(0)
+    expect(season_stats.total_games_by_coach("20132014","John Tortorella")).to eq(82)
+    expect(season_stats.total_games_by_coach("20122013","John Tortorella")).to eq(60)
+    expect(season_stats.total_games_by_coach("20172018","Mike Yeo")).to eq(82)
   end
+end
+
 
   describe "#total_team_tackles_per_season" do
     it "can return the number of total tackles for each team per season" do 
