@@ -57,7 +57,9 @@ This project will use CSV data of futbol teams to create a collection of stats u
 1. Project Management [Miro Board](https://miro.com/welcomeonboard/N3pkck1nUzVxZmxNRUc0cGEyWHNXMnlnUHNrUTZMZ0xRcUhCN3BHbXg1WWhRd2o0SVUxNmJYNGFWRTEzVk1wSnwzNDU4NzY0NTYwNTgyMTA5MjczfDI=?share_link_id=894479804950)
 1. We async came up with our own ideas of how the project would look and then came together to compare notes and decide how we wanted to build things out together. Then we used the Miro Board to help assign people to classes. 
 
-## Summary of different approaches discussed and how we collectively chose one to use
+## Different project management tools we explored and what we chose
+As a team, we discussed different project managment tools such as Miro, Trello, GitHub Projects and JIRA, but landed on using Miro and GitHub Projects in tandem. We liked the use of Miro as a visual diagram of where we wanted the project to go and who was in charge of that general function of the project. 
+Then we used GitHub Projects to get a list going with some more specific tasks relevant to the project flow we laid out on the Miro board! 
 
 ## Our approach to the code design
 We started off with drafting out the connection between classes and class methods, looked for where we could use a parent class and utilize inheritance as well as map out the the CSVs to the class and methods. We collectively decided to all start on our spec files for each class to get an understanding of what we were building toward together. 
