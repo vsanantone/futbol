@@ -7,11 +7,9 @@ require_relative 'game_teams'
 class SeasonStats < Stats
   attr_reader :games, :teams, :game_teams
   def initialize(data)
-    @games = build_games(data)
-    @teams = build_teams(data)
-    @game_teams = build_game_teams(data)  
+    super
   end
-
+  
   def indiv_season(season_id)
     season = games.find_all do |game|
       season_id == game.season 
@@ -74,14 +72,6 @@ class SeasonStats < Stats
     coach_win_percentages[0]
   end
 
-  def most_tackles(season_id)
-    season = indiv_season(season_id)
-    most_tackles = season.max_by do |game|
-      game.tackles
-      require 'pry'; binding.pry
-    end
-  end
-
   # def worst_coach(season_id)
   #   season = win_or_loss_per_season(season_id, "WIN")
   #   most_wins = season.map do |game|
@@ -94,10 +84,9 @@ class SeasonStats < Stats
   #     total_games = total_games_by_coach(season_id, coach).to_f
   #     total_wins.to_f / total_games
   #   end
-  #   require 'pry';binding.pry
   #   coach_win_percentages[0]
   # end
-    
+
+  # def most_tackles(season_id)
+  # end
 end
-
-

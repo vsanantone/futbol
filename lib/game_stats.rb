@@ -1,21 +1,13 @@
+require_relative 'stats'
 require_relative 'game'
 require 'csv'
 
-class GameStats
+class GameStats < Stats
   attr_reader :games,
               :counter
 
   def initialize(data)
-    @games = build_games(data)
-  end
-
-  def build_games(data)
-    games = []
-    info = CSV.parse (File.read(data[:games])), headers: true, header_converters: :symbol
-    info.each do |row|
-      games << Game.new(row)
-    end
-    games
+    super
   end
 
   def highest_total_score

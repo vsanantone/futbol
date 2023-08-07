@@ -6,6 +6,12 @@ require_relative 'game_teams'
 class Stats 
   attr_reader :games, :teams, :game_teams
 
+  def initialize(data)
+    @games = build_games(data)
+    @teams = build_teams(data)
+    @game_teams = build_game_teams(data)
+  end
+
   def build_games(data)
     games = []
     info = CSV.parse (File.read(data[:games])), headers: true, header_converters: :symbol

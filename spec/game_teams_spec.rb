@@ -17,5 +17,7 @@ RSpec.describe GameTeam do
     expect(@game_team1.shots).to eq(8)
     expect(@game_team1.goals).to eq(2)
     expect(@game_team1.tackles).to eq(44)
+
+    
   end
 end
