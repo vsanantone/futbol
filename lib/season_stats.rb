@@ -1,6 +1,10 @@
-# separate it out to make sure it is only ONE season and be able to compare total wins for each team/coach witin a season
+require 'csv'
+require_relative 'stats'
+require_relative 'game'
+require_relative 'team'
+require_relative 'game_teams'
 
-class SeasonStats
+class SeasonStats < Stats
   attr_reader :games, :teams, :game_teams
   def initialize(data)
     @games = build_games(data)
