@@ -1,39 +1,13 @@
-# separate it out to make sure it is only ONE season and be able to compare total wins for each team/coach witin a season
+require 'csv'
+require_relative 'stats'
+require_relative 'game'
+require_relative 'team'
+require_relative 'game_teams'
 
-class SeasonStats
+class SeasonStats < Stats
   attr_reader :games, :teams, :game_teams
   def initialize(data)
-    @games = build_games(data)
-    @teams = build_teams(data)
-    @game_teams = build_game_teams(data)  
-  end
-
-  def build_games(data)
-    games = []
-    info = CSV.parse (File.read(data[:games])), headers: true, header_converters: :symbol
-    info.each do |row|
-      games << Game.new(row)
-    end
-    games
-  end
-
-  def build_teams(data)
-    teams = []
-    team_info = CSV.parse (File.read(data[:teams])), headers: true, header_converters: :symbol
-    team_info.each do |row|
-      teams << Team.new(row)
-    end
-    teams
-  end
-
-  
-  def build_game_teams(data)
-    game_teams = []
-    game_teams_info = CSV.parse (File.read(data[:game_teams])), headers: true, header_converters: :symbol
-    game_teams_info.each do |row|
-      game_teams << GameTeam.new(row)
-    end
-    game_teams
+    super
   end
   
   def indiv_season(season_id)
@@ -67,6 +41,22 @@ class SeasonStats
     coach_games.length
   end
 
+  def total_team_tackles_per_season(season_id, team_id)
+    season = indiv_season(season_id)
+    total_team_tackles = {}
+    total_tackles = []
+    team_ids = []
+    teams.find_all do |team|
+      team_ids << team.id
+    end
+
+    season.find_all do |game|
+      game.team_id == team_id
+      total_tackles << game.tackles.to_i
+    end
+    total_team_tackles[team_id]= total_tackles.sum
+  end
+
   def winningest_coach(season_id)
     season = win_or_loss_per_season(season_id, "WIN")
     most_wins = season.map do |game|
@@ -94,8 +84,9 @@ class SeasonStats
   #     total_games = total_games_by_coach(season_id, coach).to_f
   #     total_wins.to_f / total_games
   #   end
-  #   require 'pry';binding.pry
   #   coach_win_percentages[0]
   # end
-    
+
+  # def most_tackles(season_id)
+  # end
 end

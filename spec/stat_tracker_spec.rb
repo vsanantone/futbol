@@ -1,3 +1,4 @@
+require_relative 'spec_helper'
 require '../futbol/lib/stat_tracker'
 
 RSpec.describe StatTracker do
@@ -65,5 +66,41 @@ RSpec.describe StatTracker do
       "20172018"=>4.44
     }
     expect(@stat_tracker.average_goals_by_season).to eq expected
+  end
+
+  it "#count_of_teams" do
+    expect(@stat_tracker.count_of_teams).to eq 32
+  end
+
+  it "#best_offense" do
+    expect(@stat_tracker.best_offense).to eq "Reign FC"
+  end
+
+  it "#worst_offense" do
+    expect(@stat_tracker.worst_offense).to eq "Utah Royals FC"
+  end
+
+  it "#highest_scoring_visitor" do
+    expect(@stat_tracker.highest_scoring_visitor).to eq "FC Dallas"
+  end
+
+  it "#lowest_scoring_visitor" do
+    expect(@stat_tracker.lowest_scoring_visitor).to eq "San Jose Earthquakes"
+  end
+
+  it "#lowest_scoring_home_team" do
+    expect(@stat_tracker.lowest_scoring_home_team).to eq "Utah Royals FC"
+  end
+
+  it "#team_info" do
+    team_id = "1"
+    expected_info = {
+      "team_id" => "1",                      
+      "franchise_id" => "23",
+      "team_name" => "Atlanta United",
+      "abbreviation" => "ATL",
+      "link" => "/api/v1/teams/1"
+      }  
+    expect(@stat_tracker.team_info(team_id)).to eq expected_info
   end
 end

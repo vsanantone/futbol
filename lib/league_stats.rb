@@ -8,9 +8,7 @@ class LeagueStats < Stats
   attr_reader :games, :teams, :game_teams
 
   def initialize(data)
-    @games = build_games(data)
-    @teams = build_teams(data)
-    @game_teams = build_game_teams(data)
+    super
   end
 
   def count_of_teams
