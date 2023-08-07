@@ -74,11 +74,11 @@ class LeagueStats < Stats
   def team_info(team_id)
     team = find_team_by_id(team_id)
     info = {
-      team_id: team.id,
-      franchise_id: team.franchise_id,
-      team_name: team.name,
-      abbreviation: team.abbreviation,
-      link: team.link
+      "team_id" => team.id,
+      "franchise_id" => team.franchise_id,
+      "team_name" => team.name,
+      "abbreviation" => team.abbreviation,
+      "link" => team.link
     }
     info
   end
