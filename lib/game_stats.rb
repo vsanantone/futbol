@@ -66,14 +66,6 @@ class GameStats
   end
 
   def average_goals_per_game
-    percent = @games.find_all do |game|
-
-      game.home_goals + game.away_goals  
-    end
-    ((percent.length.to_f) / (@games.length.to_f)).round(2)
-  end
-
-  def average_goals_per_game
     goals = @games.sum do |game|
       game.home_goals + game.away_goals
     end
