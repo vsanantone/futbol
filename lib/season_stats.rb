@@ -43,6 +43,16 @@ class SeasonStats < Stats
     coach_games.length
   end
 
+  def total_team_tackles_per_season(season_id, team_id)
+    season = indiv_season(season_id)
+    total_team_tackles = {}
+    total_tackles = []
+    team_ids = []
+    teams.find_all do |team|
+      team_ids << team.id
+    end
+  end
+
   def winningest_coach(season_id)
     season = win_or_loss_per_season(season_id, "WIN")
     most_wins = season.map do |game|
